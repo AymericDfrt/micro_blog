@@ -1,6 +1,7 @@
 <?php
 include('includes/connexion.inc.php');
 
+if($connect){
 	if (isset($_POST['message']) && !empty($_POST['message'])) {
 				if (isset($_POST['idmess']) && !empty($_POST['idmess'])) {
 
@@ -15,6 +16,7 @@ include('includes/connexion.inc.php');
 		}
 		$prep->execute();
 	}
+}
 
 	header("Location: index.php");
 	exit();

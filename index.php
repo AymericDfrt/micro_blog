@@ -4,7 +4,13 @@ include('includes/haut.inc.php');
 $message = "";
 $action = "Envoyer";
 $id = 0;      
-//de
+$messages_par_page = 5;
+$nb_de_pages = 0;
+$page_num = 1;
+
+if(isset($_GET['p'])){
+    $page_num = $_GET['p'];
+}
                 if($connect){
                     if (isset($_GET['id']) && !empty($_GET['id'])) {
                         $id = $_GET['id'];
@@ -40,15 +46,29 @@ $id = 0;
      <?php } ?>   
 </div>
 
+
 <?php
-$query = 'SELECT * FROM messages';
-$stmt = $pdo->query($query);
+
+    $query = "SELECT count(*) FROM messages";
+    $prep = $pdo->prepare($query);
+    $prep->execute();
+    $data = $prep->fetch();
+    $nb_de_pages = ceil ($data['count(*)'] / $messages_par_page);
 
 
-while ($data = $stmt->fetch()) {
-	?>
-	<blockquote>
-    		<?= $data['texte'] ?><br>
+    $indexP = ($messages_par_page * $page_num) - $messages_par_page;
+    $limit_mess = $indexP + $messages_par_page;
+
+    $query = "SELECT * FROM messages LIMIT ?,?";
+    $prep = $pdo->prepare($query);
+    $prep->bindValue(1, $indexP, PDO::PARAM_INT);
+    $prep->bindValue(2, $limit_mess, PDO::PARAM_INT);
+    $prep->execute();
+
+    while ($data = $prep->fetch()) {
+    ?>
+        <blockquote>
+            <?= $data['texte'] ?><br>
             <?php  
                 if ($connect) {
             ?>
@@ -63,9 +83,11 @@ while ($data = $stmt->fetch()) {
              }
 
              ?>
-    	</blockquote>
-	<?php
-}
-?>
+ 
+        </blockquote>
+    <?php } 
+    ?>
+    
+ 
 
 <?php include('includes/bas.inc.php'); ?>
