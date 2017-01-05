@@ -4,7 +4,7 @@ include('includes/haut.inc.php');
 $message = "";
 $action = "Envoyer";
 $id = 0;      
-
+//de
                 if($connect){
                     if (isset($_GET['id']) && !empty($_GET['id'])) {
                         $id = $_GET['id'];
