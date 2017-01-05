@@ -52,9 +52,9 @@
                     <li class="page-scroll">
                         <?php
                            
-                        if($connect)
+                        if($connect){
                             echo "<a href='deconnexion.php'>Deconnexion</a>";
-                        else{
+                        }else{
                             echo "<a href='connexion.php'>Connexion</a>";
                         }
                         ?>
