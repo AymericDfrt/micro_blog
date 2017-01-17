@@ -8,6 +8,7 @@ $messages_par_page = 5;
 $nb_de_pages = 0;
 $page_num = 1;
 
+
 if(isset($_GET['p'])){
     $page_num = $_GET['p'];
 }
@@ -48,21 +49,24 @@ if(isset($_GET['p'])){
 
 
 <?php
-
     $query = "SELECT count(*) FROM messages";
     $prep = $pdo->prepare($query);
     $prep->execute();
     $data = $prep->fetch();
+
+
     $nb_de_pages = ceil ($data['count(*)'] / $messages_par_page);
 
+    if($page_num < 1) $page_num = 1;
+    if($page_num > $nb_de_pages) $page_num = $nb_de_pages;
 
     $indexP = ($messages_par_page * $page_num) - $messages_par_page;
-    $limit_mess = $indexP + $messages_par_page;
+
 
     $query = "SELECT * FROM messages LIMIT ?,?";
     $prep = $pdo->prepare($query);
     $prep->bindValue(1, $indexP, PDO::PARAM_INT);
-    $prep->bindValue(2, $limit_mess, PDO::PARAM_INT);
+    $prep->bindValue(2, $messages_par_page, PDO::PARAM_INT);
     $prep->execute();
 
     while ($data = $prep->fetch()) {
@@ -88,6 +92,28 @@ if(isset($_GET['p'])){
     <?php } 
     ?>
     
+    <ul class="pagination">
+    <li>
+      <?= "<a href='?p=".($page_num-1)."' aria-label='Previous'>" ?>
+
+       <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+
+    <?php
+         for ($i=1; $i <= $nb_de_pages ; $i++) { 
+             echo "<li><a href=?p=" .$i.">".$i."</a></li>";
+         }
+    ?>
+    
+    <li>
+    <?= "<a href='?p=".($page_num+1)."' aria-label='Next'>" ?>
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+
+
  
 
 <?php include('includes/bas.inc.php'); ?>

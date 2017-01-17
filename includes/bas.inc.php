@@ -1,27 +1,7 @@
-                <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <?php
-         for ($i=1; $i <= $nb_de_pages ; $i++) { 
-             echo "<li><a href=?p=" .$i.">".$i."</a></li>";
-         }
-    ?>
-    
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+     </nav>
         </div>
 
     </section>
- 
-
     <!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">

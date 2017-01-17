@@ -1,7 +1,6 @@
 <?php
 include('includes/connexion.inc.php');
 include('includes/haut.inc.php');
-include('includes/connexion.inc.php');
 
 if (isset($_POST['email']) && isset($_POST['pwd'])) {
                     $query = "SELECT email, mdp FROM utilisateurs WHERE email = ? AND mdp = ?";
