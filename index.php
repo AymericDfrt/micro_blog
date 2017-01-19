@@ -63,7 +63,7 @@ if(isset($_GET['p'])){
     $indexP = ($messages_par_page * $page_num) - $messages_par_page;
 
 
-    $query = "SELECT * FROM messages LIMIT ?,?";
+    $query = "SELECT *, mess.id AS mess_id FROM messages AS mess INNER JOIN utilisateurs AS users ON mess.utilisateur_id = users.id LIMIT ?,?";
     $prep = $pdo->prepare($query);
     $prep->bindValue(1, $indexP, PDO::PARAM_INT);
     $prep->bindValue(2, $messages_par_page, PDO::PARAM_INT);
@@ -76,10 +76,11 @@ if(isset($_GET['p'])){
             <?php  
                 if ($connect) {
             ?>
-            <?php echo "<a href='index.php?id=" .$data['id']. "'><button type='button' class='btn btn-warning'>Modifier</button></a>" ?>
-            <?php echo "<a href='message_sup.php?id=" .$data['id']. "'><button type='button' class='btn btn-danger'>Supprimer</button></a><br>";
+            <?php echo "<a href='index.php?id=" .$data['mess_id']. "'><button type='button' class='btn btn-warning'>Modifier</button></a>" ?>
+            <?php echo "<a href='message_sup.php?id=" .$data['mess_id']. "'><button type='button' class='btn btn-danger'>Supprimer</button></a><br>";
                 }
              ?>
+             <?php echo "<u>Envoyé par :</u> " . $data['pseudo'] . "<br>" ?>
             <?php echo "<u>créé le :</u> " . date("d-m-Y à H:i:s", $data['dateCreation']) . "<br>" ?>
             <?php 
              if($data['dateModification'] != 0){
@@ -102,7 +103,7 @@ if(isset($_GET['p'])){
 
     <?php
          for ($i=1; $i <= $nb_de_pages ; $i++) { 
-             echo "<li><a href=?p=" .$i.">".$i."</a></li>";
+                echo "<li><a href=?p=" .$i.">".$i."</a></li>";
          }
     ?>
     

@@ -2,7 +2,9 @@
 include('includes/connexion.inc.php');
 include('includes/haut.inc.php');
 
-setcookie("sid", "", -1);
+setcookie("sid_aircheck", "", -1);
 
+echo "test";
 header("Location: index.php");
+exit();
 ?>

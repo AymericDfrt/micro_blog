@@ -26,9 +26,9 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
+    <![endif]-->        
+    <script type="text/javascript" src="jquery.min.js"></script>
+</head> 
 
 <body id="page-top" class="index">
 
@@ -47,13 +47,13 @@
 
             <div class="navbar-header page-scroll">
                 <?php
-                if ($connect) {
+              /*  if ($connect) {
                  $query = "Select pseudo from utilisateurs where sid='" .$cook. "'";
                 $stmt = $pdo->query($query);
                      if($data = $stmt->fetch()){
                         echo "<a href=''>Bienvenue ".$data['pseudo']. "</a>";
                      }
-                }
+                }*/
                 ?>
   
             </div>

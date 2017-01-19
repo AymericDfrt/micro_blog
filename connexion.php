@@ -1,6 +1,36 @@
 <?php
 include('includes/connexion.inc.php');
 include('includes/haut.inc.php');
+?>
+<script>
+  
+$(function(){
+
+$('form').submit(function(){
+
+  $('.hidden').show();
+  var email = $("input[name='email']").val();
+  var pwd = $("input[name='pwd']").val();
+
+  if (!email || !pwd) {
+    $('#notif').removeClass();
+    $('#notif').addClass("alert alert-danger");
+    $('#notif').html("Veuillez entrer vos identifiants");
+    $('#notif').slideDown('fast');
+  }else{
+    return true;
+  }
+  return false;
+});
+
+});
+
+</script>
+
+
+<div id="notif" class="hidden"></div>
+
+<?php
 
 if (isset($_POST['email']) && isset($_POST['pwd'])) {
                     $query = "SELECT email, mdp FROM utilisateurs WHERE email = ? AND mdp = ?";

@@ -10,9 +10,15 @@ if($connect){
 					$prep->bindValue(1, $_POST['message']);
 					$prep->bindValue(2, $_POST['idmess']);
 				}else{
-					$query = "INSERT INTO messages (dateCreation, texte) VALUES (UNIX_TIMESTAMP(), ?)";
+                $query = "SELECT id from utilisateurs where sid='" .$cook. "'";
+                $stmt = $pdo->query($query);
+                if($data = $stmt->fetch()){
+                    $query = "INSERT INTO messages (dateCreation, texte, utilisateur_id) VALUES (UNIX_TIMESTAMP(), ?, ?)";
 					$prep = $pdo->prepare($query);
-					$prep->bindValue(1, $_POST['message']);			
+					$prep->bindValue(1, $_POST['message']);		
+					$prep->bindValue(2, $data['id']);		
+                }
+					
 		}
 		$prep->execute();
 	}
