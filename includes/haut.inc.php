@@ -55,9 +55,19 @@
   
             </div>
 
+           <div class="col-lg-4">
+                 <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Rechercher...">
+                    <span class="input-group-btn">
+                     <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                 </div>
+            </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
