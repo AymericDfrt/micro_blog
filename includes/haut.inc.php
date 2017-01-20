@@ -42,17 +42,14 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.php">Micro blog  </a>
+                <a class="navbar-brand" href="index.php">Micro blog  </a> 
+                
             </div>
 
             <div class="navbar-header page-scroll">
                 <?php
               /*  if ($connect) {
-                 $query = "Select pseudo from utilisateurs where sid='" .$cook. "'";
-                $stmt = $pdo->query($query);
-                     if($data = $stmt->fetch()){
-                        echo "<a href=''>Bienvenue ".$data['pseudo']. "</a>";
-                     }
+                 
                 }*/
                 ?>
   
@@ -68,7 +65,12 @@
                         <?php
                            
                         if($connect){
-                            echo "<a href='deconnexion.php'>Deconnexion</a></li>";
+                         $query = "Select pseudo from utilisateurs where sid='" .$cook. "'";
+                         $stmt = $pdo->query($query);
+                             if($data = $stmt->fetch()){
+                               echo "<li><a href=''>Bienvenue " .$data['pseudo']. "</a></li><li><a href='deconnexion.php'>Deconnexion</a></li>";
+                             }
+                            
                         }else{
                             echo "<a href='connexion.php'>Connexion</a> </li><li><a href='inscription.php'>Inscription</a> </li>";
                         }
