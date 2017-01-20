@@ -2,9 +2,11 @@
 include('includes/connexion.inc.php');
 include('includes/haut.inc.php');
 
-setcookie("sid_aircheck", "", -1);
+if($connect){
+	//Suppression de l'identifiant de session utilisateur dans le cookie
+	setcookie("sid", "", -1);
+}
 
-echo "test";
 header("Location: index.php");
 exit();
 ?>

@@ -68,10 +68,9 @@
                         <?php
                            
                         if($connect){
-
-                            echo "<a href='deconnexion.php'>Deconnexion</a>";
+                            echo "<a href='deconnexion.php'>Deconnexion</a></li>";
                         }else{
-                            echo "<a href='connexion.php'>Connexion</a>";
+                            echo "<a href='connexion.php'>Connexion</a> </li><li><a href='inscription.php'>Inscription</a> </li>";
                         }
                         ?>
                         
