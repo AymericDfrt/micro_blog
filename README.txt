@@ -20,3 +20,12 @@ Cependant, si il y a déconnexion, RDV sur la page de connection via le lien en h
 
 
 /////////MEMBRES/////////////
+
+->AJOUT D'UN ARTICLE
+Pour créer un article, un champ texte "message" est disponnible au dessus des articles déjà créé. 
+Lorsque celui-ci est rédigé, il suffit de le soumettre en appuyant sur le bouton "Envoyer"   
+
+->MODIFICATION / SUPPRESSION D'UN ARTICLE
+Pour chaques articles, 2 boutons sont disponnibles. 
+Un pour modifier; lorsque que celui-ci est utilisé, le message apparaitra dans le champ texte "message" comme pour la création. 
+
