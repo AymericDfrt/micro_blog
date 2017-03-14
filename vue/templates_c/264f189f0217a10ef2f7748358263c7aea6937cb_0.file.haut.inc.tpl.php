@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-28 15:58:14
+/* Smarty version 3.1.30, created on 2017-03-14 13:40:33
   from "C:\xampp\htdocs\micro_blog_mvc\vue\templates\includes\haut.inc.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58b590065342e5_62668279',
+  'unifunc' => 'content_58c7e4c13a02f4_73482882',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '264f189f0217a10ef2f7748358263c7aea6937cb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\micro_blog_mvc\\vue\\templates\\includes\\haut.inc.tpl',
-      1 => 1488292290,
+      1 => 1489495168,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58b590065342e5_62668279 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58c7e4c13a02f4_73482882 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -83,11 +83,11 @@ function content_58b590065342e5_62668279 (Smarty_Internal_Template $_smarty_tpl)
            <div class="col-lg-4">
                 
                     <span class="input-group-btn">
-                    <form method="POST" action="?p=home">
+                    <form method="GET">
                      <div class="input-group">
                   <input type="text" class="form-control" placeholder="Rechercher..." name="recherche">
                        <span class="input-group-btn">
-                        <input class="btn btn-default" type="submit">Go!</input>
+                         <input class="btn btn-default" type="submit" value="GO!">Go!</input>
                     </form>
                      
                     </span>
@@ -105,8 +105,8 @@ function content_58b590065342e5_62668279 (Smarty_Internal_Template $_smarty_tpl)
                          <li class="page-scroll">
                         <?php ob_start();
 echo $_smarty_tpl->tpl_vars['connexion']->value;
-$_prefixVariable4=ob_get_clean();
-if ($_prefixVariable4) {?> 
+$_prefixVariable1=ob_get_clean();
+if ($_prefixVariable1) {?> 
                             <li><a href=''>Bienvenue <?php echo $_smarty_tpl->tpl_vars['pseudo']->value;?>
 </a></li><li><a href='?p=deconnexion'>Deconnexion</a></li>
                          <?php } else { ?>

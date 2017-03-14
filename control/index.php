@@ -60,8 +60,8 @@ if($data = $stmt->fetch()) $pseudo = $data['pseudo'];
 }
 
 $recherche =""; 
-if (isset($_POST['recherche'])) {
-  $recherche = $_POST['recherche'];
+if (isset($_GET['recherche'])) {
+  $recherche = $_GET['recherche'];
 }
   $rechercheParam = '%'.$recherche.'%';
 
@@ -73,10 +73,16 @@ if (isset($_POST['recherche'])) {
 
     $messages->execute();
 
+    $messages_tab = array();
+
+foreach ($messages as $mess) {
+  array_push($messages_tab, array('mess_id' => $mess['mess_id'], 'texte' => $mess['texte'], 'pseudo' => $mess['pseudo'], 'dateCreation' => $mess['dateCreation'], 'dateModification' => $mess['dateModification']));
+}
+
 $smarty->assign('action_btn', $action);
 $smarty->assign('id_mess', $id);
 $smarty->assign('message', $message);
-$smarty->assign('messages', $messages);
+$smarty->assign('messages', $messages_tab);
 $smarty->assign('nb_de_pages_article', $nb_de_pages);
 $smarty->assign('num_page', $page_num);
 $smarty->assign('pseudo', $pseudo);

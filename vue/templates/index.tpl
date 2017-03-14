@@ -20,7 +20,7 @@
 
 
 <blockquote>
-{foreach $messages as $mess} 
+{foreach $messages as $mess}
 {$mess.texte} <br>
 {if {$connexion}}
 <a href="index.php?id={$mess.mess_id}"><button type='button' class='btn btn-warning'>Modifier</button></a>

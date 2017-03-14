@@ -53,11 +53,11 @@
            <div class="col-lg-4">
                 
                     <span class="input-group-btn">
-                    <form method="POST" action="?p=home">
+                    <form method="GET">
                      <div class="input-group">
                   <input type="text" class="form-control" placeholder="Rechercher..." name="recherche">
                        <span class="input-group-btn">
-                        <input class="btn btn-default" type="submit">Go!</input>
+                         <input class="btn btn-default" type="submit" value="GO!">Go!</input>
                     </form>
                      
                     </span>

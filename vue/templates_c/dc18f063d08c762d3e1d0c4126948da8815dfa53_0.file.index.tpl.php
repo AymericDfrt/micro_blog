@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-28 15:59:26
+/* Smarty version 3.1.30, created on 2017-03-14 14:52:05
   from "C:\xampp\htdocs\micro_blog_mvc\vue\templates\index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58b5904edb6240_27710500',
+  'unifunc' => 'content_58c7f58509b326_13944017',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc18f063d08c762d3e1d0c4126948da8815dfa53' => 
     array (
       0 => 'C:\\xampp\\htdocs\\micro_blog_mvc\\vue\\templates\\index.tpl',
-      1 => 1488293965,
+      1 => 1489499519,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:includes/bas.inc.tpl' => 1,
   ),
 ),false)) {
-function content_58b5904edb6240_27710500 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58c7f58509b326_13944017 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\xampp\\htdocs\\micro_blog_mvc\\vendor\\smarty\\plugins\\modifier.date_format.php';
 $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -58,8 +58,7 @@ if ($_prefixVariable1) {?>
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['messages']->value, 'mess');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['mess']->value) {
-?> 
-<?php echo $_smarty_tpl->tpl_vars['mess']->value['texte'];?>
+echo $_smarty_tpl->tpl_vars['mess']->value['texte'];?>
  <br>
 <?php ob_start();
 echo $_smarty_tpl->tpl_vars['connexion']->value;
