@@ -38,22 +38,43 @@
 
     
 <!--Navigateur de la pagination-->
+
+{if $recherche == ""}
 <ul class="pagination">
 <li>
    <a href="?p_article={$num_page -1}" aria-label='Previous'>
    <span aria-hidden="true">&laquo;</span>
   </a>
 </li>
-
 {for $i=1 to {$nb_de_pages_article}}
      <li><a href="index.php?p_article={$i}">{$i}</a></li>
 {/for}
-
 <li>
-	<a href="?p_article={$num_page +1}" aria-label='Next'>
-  	  <span aria-hidden="true">&raquo;</span>
+  <a href="?p_article={$num_page +1}" aria-label='Next'>
+      <span aria-hidden="true">&raquo;</span>
     </a>
 </li>
 </ul>
+
+{elseif $recherche != ""}
+<ul class="pagination">
+<li>
+   <a href="?p_article={$num_page -1}&recherche={$recherche}" aria-label='Previous'>
+   <span aria-hidden="true">&laquo;</span>
+  </a>
+</li>
+
+{for $i=1 to {$nb_de_pages_article}}
+         <li><a href="index.php?p_article={$i}&recherche={$recherche}">{$i}</a></li>
+{/for}
+<li>
+  <a href="?p_article={$num_page +1}&recherche={$recherche}" aria-label='Next'>
+      <span aria-hidden="true">&raquo;</span>
+    </a>
+</li>
+</ul>
+{/if}
+
+
 
 {include file='includes/bas.inc.tpl'}

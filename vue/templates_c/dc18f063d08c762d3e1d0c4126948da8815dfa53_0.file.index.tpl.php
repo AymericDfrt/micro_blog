@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-14 14:52:05
+/* Smarty version 3.1.30, created on 2017-03-29 13:45:02
   from "C:\xampp\htdocs\micro_blog_mvc\vue\templates\index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58c7f58509b326_13944017',
+  'unifunc' => 'content_58db9e3e37d330_49523401',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc18f063d08c762d3e1d0c4126948da8815dfa53' => 
     array (
       0 => 'C:\\xampp\\htdocs\\micro_blog_mvc\\vue\\templates\\index.tpl',
-      1 => 1489499519,
+      1 => 1490787900,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:includes/bas.inc.tpl' => 1,
   ),
 ),false)) {
-function content_58c7f58509b326_13944017 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58db9e3e37d330_49523401 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\xampp\\htdocs\\micro_blog_mvc\\vendor\\smarty\\plugins\\modifier.date_format.php';
 $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -89,6 +89,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 
     
 <!--Navigateur de la pagination-->
+
+<?php if ($_smarty_tpl->tpl_vars['recherche']->value == '') {?>
 <ul class="pagination">
 <li>
    <a href="?p_article=<?php echo $_smarty_tpl->tpl_vars['num_page']->value-1;?>
@@ -96,7 +98,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
    <span aria-hidden="true">&laquo;</span>
   </a>
 </li>
-
 <?php ob_start();
 echo $_smarty_tpl->tpl_vars['nb_de_pages_article']->value;
 $_prefixVariable3=ob_get_clean();
@@ -111,14 +112,50 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
 }
 ?>
 
-
 <li>
-	<a href="?p_article=<?php echo $_smarty_tpl->tpl_vars['num_page']->value+1;?>
+  <a href="?p_article=<?php echo $_smarty_tpl->tpl_vars['num_page']->value+1;?>
 " aria-label='Next'>
-  	  <span aria-hidden="true">&raquo;</span>
+      <span aria-hidden="true">&raquo;</span>
     </a>
 </li>
 </ul>
+
+<?php } elseif ($_smarty_tpl->tpl_vars['recherche']->value != '') {?>
+<ul class="pagination">
+<li>
+   <a href="?p_article=<?php echo $_smarty_tpl->tpl_vars['num_page']->value-1;?>
+&recherche=<?php echo $_smarty_tpl->tpl_vars['recherche']->value;?>
+" aria-label='Previous'>
+   <span aria-hidden="true">&laquo;</span>
+  </a>
+</li>
+
+<?php ob_start();
+echo $_smarty_tpl->tpl_vars['nb_de_pages_article']->value;
+$_prefixVariable4=ob_get_clean();
+$_smarty_tpl->tpl_vars['i'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['i']->step = 1;$_smarty_tpl->tpl_vars['i']->total = (int) ceil(($_smarty_tpl->tpl_vars['i']->step > 0 ? $_prefixVariable4+1 - (1) : 1-($_prefixVariable4)+1)/abs($_smarty_tpl->tpl_vars['i']->step));
+if ($_smarty_tpl->tpl_vars['i']->total > 0) {
+for ($_smarty_tpl->tpl_vars['i']->value = 1, $_smarty_tpl->tpl_vars['i']->iteration = 1;$_smarty_tpl->tpl_vars['i']->iteration <= $_smarty_tpl->tpl_vars['i']->total;$_smarty_tpl->tpl_vars['i']->value += $_smarty_tpl->tpl_vars['i']->step, $_smarty_tpl->tpl_vars['i']->iteration++) {
+$_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1;$_smarty_tpl->tpl_vars['i']->last = $_smarty_tpl->tpl_vars['i']->iteration == $_smarty_tpl->tpl_vars['i']->total;?>
+         <li><a href="index.php?p_article=<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+&recherche=<?php echo $_smarty_tpl->tpl_vars['recherche']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
+</a></li>
+<?php }
+}
+?>
+
+<li>
+  <a href="?p_article=<?php echo $_smarty_tpl->tpl_vars['num_page']->value+1;?>
+&recherche=<?php echo $_smarty_tpl->tpl_vars['recherche']->value;?>
+" aria-label='Next'>
+      <span aria-hidden="true">&raquo;</span>
+    </a>
+</li>
+</ul>
+<?php }?>
+
+
 
 <?php $_smarty_tpl->_subTemplateRender("file:includes/bas.inc.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 }
