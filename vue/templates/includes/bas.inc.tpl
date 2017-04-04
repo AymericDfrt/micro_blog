@@ -19,14 +19,19 @@
                         <h3>A propos</h3>
                         <p>Micro blog est une application PHP basée sur le thème <a href="https://startbootstrap.com/template-overviews/freelancer/">Freelancer</a>.</p>
                     </div>
+
                 </div>
             </div>
         </div>
         <div class="footer-below">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-9">
                         Copyright &copy; Your Website 2016
+                    </div>
+                    <div class="col-lg-3">
+                        <a class="icone facebook" href="http://facebook.fr"></a>
+                        <a class="icone twitter" href="http://twitter.com"></a>
                     </div>
                 </div>
             </div>
@@ -41,7 +46,9 @@
     </div>
 
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js">
+        
+    </script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

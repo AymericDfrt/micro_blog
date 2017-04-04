@@ -499,3 +499,16 @@ fieldset[disabled] .btn-success.active {
   opacity: 0;
   display: none;
 }
+
+
+.icone{
+display: inline-block;
+width: 48px; 
+height: 48px;
+background-image: url("./img/rs.png");
+background-repeat: no-repeat;
+}
+
+.facebook{
+  background-position: -48px 0px;
+}

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-14 13:40:33
+/* Smarty version 3.1.30, created on 2017-03-29 18:51:10
   from "C:\xampp\htdocs\micro_blog_mvc\vue\templates\includes\haut.inc.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58c7e4c13a02f4_73482882',
+  'unifunc' => 'content_58dbe5fe028387_41488214',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '264f189f0217a10ef2f7748358263c7aea6937cb' => 
     array (
       0 => 'C:\\xampp\\htdocs\\micro_blog_mvc\\vue\\templates\\includes\\haut.inc.tpl',
-      1 => 1489495168,
+      1 => 1490806198,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58c7e4c13a02f4_73482882 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58dbe5fe028387_41488214 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -35,16 +35,16 @@ function content_58c7e4c13a02f4_73482882 (Smarty_Internal_Template $_smarty_tpl)
     <title>Micro blog</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="./vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Theme CSS -->
-    <link href="./css/freelancer.css" rel="stylesheet">
+    <link href="js/../css/freelancer.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
+    <link href="js/../css/style.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -56,7 +56,7 @@ function content_58c7e4c13a02f4_73482882 (Smarty_Internal_Template $_smarty_tpl)
 >
     <![endif]-->        
     <?php echo '<script'; ?>
- type="text/javascript" src="jquery.min.js"><?php echo '</script'; ?>
+ src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"><?php echo '</script'; ?>
 >
 </head> 
 

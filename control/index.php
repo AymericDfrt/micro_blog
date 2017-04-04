@@ -4,7 +4,6 @@ $action = "Envoyer";
 $id = 0;      
 $messages_par_page = 4;
 $pseudo= "";
-
   //Affichage du message à modifier
  // if($connect){
       if (isset($_GET['id']) && !empty($_GET['id']) && $_GET['id']!=0) {
@@ -62,6 +61,7 @@ if (isset($_GET['recherche'])) {
 
   
 }
+
   //nbr_de_pages = arrondi supérieur du nombre total de messages divisé par le nombre max de messages par page
   $nb_de_pages = ceil ($data['nbrmessages'] / $messages_par_page);
 
@@ -77,7 +77,6 @@ if (isset($_GET['recherche'])) {
    - Affichage des messages du plus récent au plus ancien
    - Utilisation de la commande LIMIT prenent en paramètre, l'index calculé plus tôt et le nombre de message max par page 
   */
- 
 
    $query = "SELECT *, mess.id AS mess_id FROM messages AS mess INNER JOIN utilisateurs AS users ON mess.utilisateur_id = users.id WHERE mess.texte LIKE ? ORDER BY dateCreation DESC LIMIT ?,?";
     $messages = $pdo->prepare($query);
@@ -86,9 +85,7 @@ if (isset($_GET['recherche'])) {
     $messages->bindValue(3, $messages_par_page, PDO::PARAM_INT);
 
     $messages->execute();
-
     $messages_tab = array();
-
 
 foreach ($messages as $mess) {
 
@@ -108,9 +105,7 @@ if(preg_match_all("/[a-z0-9\-\.]+@[a-z0-9\-\.]+\.[a-z]+/", $mess['texte'], $matc
 
 //Url
 if(preg_match_all("/(?:http|https):\/\/((?:[\w-]+)(?:\.[\w-]+)+)(?:[\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/", $mess['texte'], $matchs, PREG_SET_ORDER)){
-
      $url = "<a href='".$matchs[0][0]."'>".$matchs[0][0]."</a>";
-       var_dump($url);
      $mess['texte'] = preg_replace("`".$matchs[0][0]."`", $url, $mess['texte']);
 }
 

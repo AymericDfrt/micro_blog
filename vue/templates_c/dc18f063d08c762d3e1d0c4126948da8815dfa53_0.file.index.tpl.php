@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-29 13:45:02
+/* Smarty version 3.1.30, created on 2017-03-29 18:36:37
   from "C:\xampp\htdocs\micro_blog_mvc\vue\templates\index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58db9e3e37d330_49523401',
+  'unifunc' => 'content_58dbe29597e725_35465049',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc18f063d08c762d3e1d0c4126948da8815dfa53' => 
     array (
       0 => 'C:\\xampp\\htdocs\\micro_blog_mvc\\vue\\templates\\index.tpl',
-      1 => 1490787900,
+      1 => 1490805394,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:includes/bas.inc.tpl' => 1,
   ),
 ),false)) {
-function content_58db9e3e37d330_49523401 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58dbe29597e725_35465049 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\xampp\\htdocs\\micro_blog_mvc\\vendor\\smarty\\plugins\\modifier.date_format.php';
 $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -30,6 +30,27 @@ $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cac
 
 <!--Formulaire d'ajout ou de modification de messages-->
 <!--/!\ Affichage pour les utilisateurs connectés ($connect)-->
+
+<?php echo '<script'; ?>
+ type="text/javascript">
+
+$(document).ready(function(){
+  $("#message").keyup(function(event){
+    var message =  $("#message").val();
+        $.ajax({
+        method: "POST",
+        url: "script/message_preview.php",
+        data: {message: message},
+        dataType: 'text',
+        success: function(data){
+        $("#prevu").html(data);
+      }
+    });
+  });
+});
+
+<?php echo '</script'; ?>
+>
 <div class="row">    
 <?php ob_start();
 echo $_smarty_tpl->tpl_vars['connexion']->value;
@@ -40,6 +61,7 @@ if ($_prefixVariable1) {?>
             <div class="form-group">
                 <textarea id="message" name="message" class="form-control" placeholder="message"><?php echo $_smarty_tpl->tpl_vars['message']->value;?>
 </textarea>
+               <p id="prevu"></p>
                 <input type='hidden' name='idmess' value="<?php echo $_smarty_tpl->tpl_vars['id_mess']->value;?>
 ">
             </div>
@@ -51,6 +73,7 @@ if ($_prefixVariable1) {?>
     </form>
     <?php }?>
 </div>
+
 
 
 <blockquote>

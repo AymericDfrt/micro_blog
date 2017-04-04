@@ -2,12 +2,32 @@
 
 <!--Formulaire d'ajout ou de modification de messages-->
 <!--/!\ Affichage pour les utilisateurs connectés ($connect)-->
+
+<script type="text/javascript">
+{literal}
+$(document).ready(function(){
+  $("#message").keyup(function(event){
+    var message =  $("#message").val();
+        $.ajax({
+        method: "POST",
+        url: "script/message_preview.php",
+        data: {message: message},
+        dataType: 'text',
+        success: function(data){
+        $("#prevu").html(data);
+      }
+    });
+  });
+});
+{/literal}
+</script>
 <div class="row">    
 {if {$connexion}}        
     <form method="post" action="?p=ajout_message">
         <div class="col-sm-10">  
             <div class="form-group">
                 <textarea id="message" name="message" class="form-control" placeholder="message">{$message}</textarea>
+               <p id="prevu"></p>
                 <input type='hidden' name='idmess' value="{$id_mess}">
             </div>
         </div>
@@ -17,6 +37,7 @@
     </form>
     {/if}
 </div>
+
 
 
 <blockquote>

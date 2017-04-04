@@ -36,6 +36,9 @@ if($p === 'home'){
 	elseif($p === 'supprimer_message'){
 	include_once('control/message_sup.php');
 	}
+	elseif($p === 'message_preview'){
+	include_once('control/message_preview.php');
+	}
 	else{
 		include_once('control/index.php');
 	}
