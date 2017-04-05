@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-29 18:36:37
+/* Smarty version 3.1.30, created on 2017-04-05 20:42:43
   from "C:\xampp\htdocs\micro_blog_mvc\vue\templates\index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58dbe29597e725_35465049',
+  'unifunc' => 'content_58e53aa38a1767_61862343',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc18f063d08c762d3e1d0c4126948da8815dfa53' => 
     array (
       0 => 'C:\\xampp\\htdocs\\micro_blog_mvc\\vue\\templates\\index.tpl',
-      1 => 1490805394,
+      1 => 1491417760,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:includes/bas.inc.tpl' => 1,
   ),
 ),false)) {
-function content_58dbe29597e725_35465049 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58e53aa38a1767_61862343 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\xampp\\htdocs\\micro_blog_mvc\\vendor\\smarty\\plugins\\modifier.date_format.php';
 $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -48,6 +48,22 @@ $(document).ready(function(){
     });
   });
 });
+$(document).on("click",".like", function(){
+          var idmess = $(this).attr('data-mess_id');
+          console.log(idmess);
+          /*
+        $.ajax({
+            method: "GET",
+            url: "../web_services/index.php?callback=secure&action=remove",
+            data: {id: idT},
+            success: function(data){
+            $(idtab).remove();
+            $("#notif").css("color", "green");
+            $("#notif").text("Tâche supprimé avec succès");
+          }
+        })*/
+  });
+
 
 <?php echo '</script'; ?>
 >
@@ -83,6 +99,7 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['mess']->value) {
 echo $_smarty_tpl->tpl_vars['mess']->value['texte'];?>
  <br>
+
 <?php ob_start();
 echo $_smarty_tpl->tpl_vars['connexion']->value;
 $_prefixVariable2=ob_get_clean();
@@ -91,6 +108,7 @@ if ($_prefixVariable2) {?>
 "><button type='button' class='btn btn-warning'>Modifier</button></a>
 <a href="index.php?p=supprimer_message&id=<?php echo $_smarty_tpl->tpl_vars['mess']->value['mess_id'];?>
 "><button type='button' class='btn btn-danger'>Supprimer</button></a><br>
+
 <?php }?>
 <b><u>Envoyé par :</u></b><?php echo $_smarty_tpl->tpl_vars['mess']->value['pseudo'];?>
 <br>
@@ -100,12 +118,15 @@ if ($_prefixVariable2) {?>
     <b><u>Modifié le :</u></b> <?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['mess']->value['dateModification'],"%D à %H:%M:%S");?>
 <br>
  <?php }?>
-<br>
+ <button type='button' class='like' data-mess_id="<?php echo $_smarty_tpl->tpl_vars['mess']->value['mess_id'];?>
+"><img src='./img/like.png'></button>
+<br><br>
 <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 ?>
+
 
 
 </blockquote>

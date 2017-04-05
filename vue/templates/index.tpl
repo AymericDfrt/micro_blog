@@ -19,6 +19,22 @@ $(document).ready(function(){
     });
   });
 });
+$(document).on("click",".like", function(){
+          var idmess = $(this).attr('data-mess_id');
+          console.log(idmess);
+          /*
+        $.ajax({
+            method: "GET",
+            url: "../web_services/index.php?callback=secure&action=remove",
+            data: {id: idT},
+            success: function(data){
+            $(idtab).remove();
+            $("#notif").css("color", "green");
+            $("#notif").text("Tâche supprimé avec succès");
+          }
+        })*/
+  });
+
 {/literal}
 </script>
 <div class="row">    
@@ -43,17 +59,21 @@ $(document).ready(function(){
 <blockquote>
 {foreach $messages as $mess}
 {$mess.texte} <br>
+
 {if {$connexion}}
 <a href="index.php?id={$mess.mess_id}"><button type='button' class='btn btn-warning'>Modifier</button></a>
 <a href="index.php?p=supprimer_message&id={$mess.mess_id}"><button type='button' class='btn btn-danger'>Supprimer</button></a><br>
+
 {/if}
 <b><u>Envoyé par :</u></b>{$mess.pseudo}<br>
 <b><u>créé le :</u></b> {$mess.dateCreation|date_format:"%D à %H:%M:%S"}<br>
  {if $mess.dateModification != 0}
     <b><u>Modifié le :</u></b> {$mess.dateModification|date_format:"%D à %H:%M:%S"}<br>
  {/if}
-<br>
+ <button type='button' class='like' data-mess_id="{$mess.mess_id}"><img src='./img/like.png'></button>
+<br><br>
 {/foreach}
+
 
 </blockquote>
 
