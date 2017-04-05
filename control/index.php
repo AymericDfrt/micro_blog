@@ -88,7 +88,6 @@ if (isset($_GET['recherche'])) {
     $messages_tab = array();
 
 foreach ($messages as $mess) {
-
 //Hashtag
 if(preg_match_all("/#([A-Za-z0-9]+)/", $mess['texte'], $matchs, PREG_SET_ORDER)){
   foreach ($matchs as $value) {
@@ -114,7 +113,8 @@ if(preg_match_all("/(?:http|https):\/\/((?:[\w-]+)(?:\.[\w-]+)+)(?:[\w.,@?^=%&am
     'texte' => $mess['texte'],
     'pseudo' => $mess['pseudo'],
     'dateCreation' => $mess['dateCreation'], 
-    'dateModification' => $mess['dateModification']
+    'dateModification' => $mess['dateModification'],
+    'nb_vote' => $mess['votes']
     ));
 }
 

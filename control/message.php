@@ -1,5 +1,5 @@
 <?php
-
+include('includes/connexion.inc.php');
 //Par sécurité, si une personne mal intentionné accède au script, on vérifie qu'elle est connecté 
 if($connect){
 	//Si le champ message existe et n'est pas vide

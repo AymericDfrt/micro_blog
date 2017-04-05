@@ -6,7 +6,7 @@
 <script type="text/javascript">
 {literal}
 $(document).ready(function(){
-  $("#message").keyup(function(event){
+$("#message").keyup(function(event){
     var message =  $("#message").val();
         $.ajax({
         method: "POST",
@@ -21,18 +21,17 @@ $(document).ready(function(){
 });
 $(document).on("click",".like", function(){
           var idmess = $(this).attr('data-mess_id');
-          console.log(idmess);
-          /*
+          var id_nb_votes = "#"+idmess;
+          var inc_nb_votes = parseInt($(id_nb_votes).text()) +1;
         $.ajax({
             method: "GET",
-            url: "../web_services/index.php?callback=secure&action=remove",
-            data: {id: idT},
+            url: "script/add_like.php",
+            data: {id_mess: idmess},
+            dataType: 'text',
             success: function(data){
-            $(idtab).remove();
-            $("#notif").css("color", "green");
-            $("#notif").text("Tâche supprimé avec succès");
+                $(id_nb_votes).text(inc_nb_votes);
           }
-        })*/
+        })
   });
 
 {/literal}
@@ -70,7 +69,8 @@ $(document).on("click",".like", function(){
  {if $mess.dateModification != 0}
     <b><u>Modifié le :</u></b> {$mess.dateModification|date_format:"%D à %H:%M:%S"}<br>
  {/if}
- <button type='button' class='like' data-mess_id="{$mess.mess_id}"><img src='./img/like.png'></button>
+ <button type='button' class='like' data-mess_id="{$mess.mess_id}" data-nb-votes="{$mess.nb_vote}"><img src='./img/like.png'></button>
+ <span id="{$mess.mess_id}">{$mess.nb_vote}</span>
 <br><br>
 {/foreach}
 

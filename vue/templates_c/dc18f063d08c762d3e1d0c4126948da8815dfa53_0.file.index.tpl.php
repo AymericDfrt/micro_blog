@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-04-05 20:42:43
+/* Smarty version 3.1.30, created on 2017-04-05 22:34:01
   from "C:\xampp\htdocs\micro_blog_mvc\vue\templates\index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58e53aa38a1767_61862343',
+  'unifunc' => 'content_58e554b967a023_35597373',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dc18f063d08c762d3e1d0c4126948da8815dfa53' => 
     array (
       0 => 'C:\\xampp\\htdocs\\micro_blog_mvc\\vue\\templates\\index.tpl',
-      1 => 1491417760,
+      1 => 1491424430,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:includes/bas.inc.tpl' => 1,
   ),
 ),false)) {
-function content_58e53aa38a1767_61862343 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58e554b967a023_35597373 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\xampp\\htdocs\\micro_blog_mvc\\vendor\\smarty\\plugins\\modifier.date_format.php';
 $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -35,7 +35,7 @@ $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cac
  type="text/javascript">
 
 $(document).ready(function(){
-  $("#message").keyup(function(event){
+$("#message").keyup(function(event){
     var message =  $("#message").val();
         $.ajax({
         method: "POST",
@@ -50,18 +50,17 @@ $(document).ready(function(){
 });
 $(document).on("click",".like", function(){
           var idmess = $(this).attr('data-mess_id');
-          console.log(idmess);
-          /*
+          var id_nb_votes = "#"+idmess;
+          var inc_nb_votes = parseInt($(id_nb_votes).text()) +1;
         $.ajax({
             method: "GET",
-            url: "../web_services/index.php?callback=secure&action=remove",
-            data: {id: idT},
+            url: "script/add_like.php",
+            data: {id_mess: idmess},
+            dataType: 'text',
             success: function(data){
-            $(idtab).remove();
-            $("#notif").css("color", "green");
-            $("#notif").text("Tâche supprimé avec succès");
+                $(id_nb_votes).text(inc_nb_votes);
           }
-        })*/
+        })
   });
 
 
@@ -119,7 +118,11 @@ if ($_prefixVariable2) {?>
 <br>
  <?php }?>
  <button type='button' class='like' data-mess_id="<?php echo $_smarty_tpl->tpl_vars['mess']->value['mess_id'];?>
+" data-nb-votes="<?php echo $_smarty_tpl->tpl_vars['mess']->value['nb_vote'];?>
 "><img src='./img/like.png'></button>
+ <span id="<?php echo $_smarty_tpl->tpl_vars['mess']->value['mess_id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['mess']->value['nb_vote'];?>
+</span>
 <br><br>
 <?php
 }
