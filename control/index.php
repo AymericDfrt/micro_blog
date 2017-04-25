@@ -4,6 +4,7 @@ $action = "Envoyer";
 $id = 0;      
 $messages_par_page = 4;
 $pseudo= "";
+$adresse_ip = $_SERVER['REMOTE_ADDR'];
   //Affichage du message à modifier
  // if($connect){
       if (isset($_GET['id']) && !empty($_GET['id']) && $_GET['id']!=0) {
@@ -108,13 +109,19 @@ if(preg_match_all("/(?:http|https):\/\/((?:[\w-]+)(?:\.[\w-]+)+)(?:[\w.,@?^=%&am
      $mess['texte'] = preg_replace("`".$matchs[0][0]."`", $url, $mess['texte']);
 }
 
+if($adresse_ip != $mess['adresse_ip']){
+  $etat_vote = true;
+}else{
+  $etat_vote = false;
+}
   array_push($messages_tab, array(
     'mess_id' => $mess['mess_id'],
     'texte' => $mess['texte'],
     'pseudo' => $mess['pseudo'],
     'dateCreation' => $mess['dateCreation'], 
     'dateModification' => $mess['dateModification'],
-    'nb_vote' => $mess['votes']
+    'nb_vote' => $mess['votes'],
+    'etat_vote' => $etat_vote
     ));
 }
 
@@ -126,6 +133,7 @@ $smarty->assign('messages', $messages_tab);
 $smarty->assign('nb_de_pages_article', $nb_de_pages);
 $smarty->assign('num_page', $page_num);
 $smarty->assign('pseudo', $pseudo);
+$smarty->assign('ip_courante', $adresse_ip);
 
 $smarty->display('index.tpl');
 ?>

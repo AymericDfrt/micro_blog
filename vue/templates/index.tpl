@@ -30,7 +30,10 @@ $(document).on("click",".like", function(){
             dataType: 'text',
             success: function(data){
                 $(id_nb_votes).text(inc_nb_votes);
-          }
+                $('.like').css('display', 'none');
+              }
+          
+
         })
   });
 
@@ -69,8 +72,11 @@ $(document).on("click",".like", function(){
  {if $mess.dateModification != 0}
     <b><u>Modifié le :</u></b> {$mess.dateModification|date_format:"%D à %H:%M:%S"}<br>
  {/if}
+
+ {if {$mess.etat_vote}}
  <button type='button' class='like' data-mess_id="{$mess.mess_id}" data-nb-votes="{$mess.nb_vote}"><img src='./img/like.png'></button>
- <span id="{$mess.mess_id}">{$mess.nb_vote}</span>
+ {/if}
+  <span id="{$mess.mess_id}">{$mess.nb_vote}</span> j'aime
 <br><br>
 {/foreach}
 
